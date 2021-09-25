@@ -1,7 +1,9 @@
 version: '3.7'
 services:
   web:
-    build: ./app
+    build:
+      context: ./app
+      dockerfile: Dockerfile.prod
     command: bash -c "cd engineer_django && gunicorn engineer_django.wsgi:application --bind 0.0.0.0:8000"
     ports:
       - 8000:8000

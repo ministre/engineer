@@ -1,0 +1,69 @@
+###########
+# BUILDER #
+###########
+
+# pull official base image
+FROM python:3.8 as builder
+
+# set work directory
+WORKDIR /opt/app
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# lint
+RUN pip install --upgrade pip
+RUN pip install flake8
+COPY ./engineer_django/ ./engineer_django/
+RUN flake8 --ignore=E501,F401 .
+
+# install dependencies
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /opt/app/wheels -r engineer_django/requirements.txt
+
+#########
+# FINAL #
+#########
+
+# pull official base image
+FROM python:3.8
+
+# create directory for the app user
+RUN mkdir -p /home/app
+
+# create the app user
+RUN addgroup --system app && adduser --system --group app
+
+# create the appropriate directories
+ENV HOME=/home/app
+ENV APP_HOME=/home/app/web
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+
+# install dependencies
+#RUN apt-get update && apt-get install -y libpq-dev
+RUN apt-get update && \
+    apt-get -y install netcat && \
+    apt-get clean
+
+COPY --from=builder /opt/app/wheels /wheels
+#COPY --from=builder /opt/app/engineer_django/requirements.txt .
+RUN pip install --no-cache /wheels/*
+
+# copy entrypoint-prod.sh
+COPY ./entrypoint.prod.sh $APP_HOME
+
+# make django project folder
+RUN mkdir engineer_django
+
+# copy project
+COPY ./engineer_django/ $APP_HOME/engineer_django/
+
+# chown all the files to the app user
+RUN chown -R app:app $APP_HOME
+
+# change to the app user
+USER app
+
+# run entrypoint.prod.sh
+ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
