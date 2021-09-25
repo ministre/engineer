@@ -12,6 +12,8 @@ db.sqlite3
 local_settings.py
 # Environments
 env/
+.env.prod
+.env.prod.db
 # C extensions
 *.so
 # Translations
