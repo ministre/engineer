@@ -1,0 +1,19 @@
+### Python ###
+*.py[cod] 
+*.class
+### PyCharm ###
+.idea
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+local_settings.py
+# Environments
+env/
+# C extensions
+*.so
+# Translations
+*.mo
+*.pot
