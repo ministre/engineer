@@ -18,7 +18,7 @@ RUN apt-get update && \
 
 # create virtual environment
 RUN python3 -m venv env
-RUN source /opt/app/env
+RUN /bin/bash -c "source env"
 
 # set work directory
 WORKDIR /opt/app/engineer_django
