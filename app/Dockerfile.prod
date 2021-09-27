@@ -15,7 +15,7 @@ ENV PYTHONUNBUFFERED 1
 # lint
 RUN pip install --upgrade pip
 RUN pip install flake8
-COPY ./engineer_django/ ./engineer_django/
+COPY . .
 RUN flake8 --ignore=E501,F401 .
 
 # install dependencies
@@ -48,14 +48,11 @@ RUN apt-get update && \
 COPY --from=builder /opt/app/wheels /wheels
 RUN pip install --no-cache /wheels/*
 
-# copy entrypoint-prod.sh
-COPY ./entrypoint.prod.sh $APP_HOME
-
 # copy project
 RUN mkdir engineer_django
-COPY ./engineer_django/ $APP_HOME/engineer_django/
-RUN mkdir engineer_django/static
-RUN mkdir engineer_django/media
+COPY . .
+RUN mkdir static
+RUN mkdir media
 
 # chown all the files to the app user
 RUN chown -R app:app $APP_HOME
