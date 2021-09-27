@@ -9,10 +9,12 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # copy project
-COPY ./engineer_django/ ./engineer_django/
+COPY . .
 
 # install dependencies
-RUN apt-get update && apt-get install -y netcat
+RUN apt-get update && \
+    apt-get -y install netcat && \
+    apt-get clean
 
 RUN pip install --upgrade pip
 RUN pip install -r engineer_django/requirements.txt
