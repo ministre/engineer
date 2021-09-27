@@ -19,11 +19,11 @@ docker-compose -f docker-compose.prod.yml exec web python engineer_django/manage
 ## Useful commands
 ### Development
 ### Production
-To run docker containers:
+To run containers:
 ```
 docker-compose -f docker-compose.prod.yml up -d
 ```
-To stop docker containers:
+To stop containers:
 ```
 docker-compose -f docker-compose.prod.yml down -v
 ```
@@ -31,7 +31,7 @@ To read logs:
 ```
 docker-compose logs -f
 ```
-To run bash in docker container:
+To run bash in container:
 ```
 docker run --rm -it --entrypoint bash engineer_web
 docker run --rm -it --entrypoint bash engineer_nginx
