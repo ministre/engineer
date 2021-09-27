@@ -9,7 +9,8 @@
 *.pyc
 __pycache__
 db.sqlite3
-local_settings.py
+app/engineer_django/static/
+app/engineer_django/media/
 # Environments
 env/
 .env.prod
