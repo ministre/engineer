@@ -50,7 +50,7 @@ Add user to docker group:
 ```
 sudo usermod -aG docker $USER
 ```
-#### Install Project
+#### Install the project
 Pull the project:
 ```
 git clone https://github.com/ministre/engineer.git
@@ -59,13 +59,17 @@ Entering the project folder:
 ```
 cd engineer
 ```
-#### Development
+##### Development
 Build and run docker containers:
 ```
 docker-compose -f docker-compose.yml up -d --build
 ```
+Create superuser:
+```
+docker-compose run --rm web python manage.py createsuperuser
+```
 
-#### Production
+##### Production
 Build and run docker containers:
 ```
 docker-compose -f docker-compose.prod.yml up -d --build
