@@ -84,13 +84,13 @@ SQL_USER=<SQL_USER>
 SQL_PASSWORD=<SQL_PASSWORD>
 SQL_HOST=db
 SQL_PORT=5432
-DATABASE=postgres" >> app/.env.prod
+DATABASE=postgres" >> .env.prod
 ```
 Assign <POSTGRES_USER>, <POSTGRES_PASSWORD>, <POSTGRES_USER>, <POSTGRES_PASSWORD> and create file .env.prod.db in app folder
 ```
 echo "POSTGRES_USER=<POSTGRES_USER>
 POSTGRES_PASSWORD=<POSTGRES_PASSWORD>
-POSTGRES_DB=engineer_django_prod" >> app/.env.prod.db
+POSTGRES_DB=engineer_django_prod" >> .env.prod.db
 ```
 Build and run docker containers:
 ```
