@@ -66,13 +66,12 @@ docker-compose -f docker-compose.yml up -d --build
 ```
 Make migrations:
 ```
-docker-compose run --rm web python manage.py migrate --noinput
+docker-compose run --rm web_dev python manage.py migrate --noinput
 ```
 Create superuser:
 ```
-docker-compose run --rm web python manage.py createsuperuser
+docker-compose run --rm web_dev python manage.py createsuperuser
 ```
-
 ##### Production
 Build and run docker containers:
 ```
