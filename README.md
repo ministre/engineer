@@ -77,12 +77,13 @@ Build and run docker containers:
 ```
 docker-compose -f docker-compose.prod.yml up -d --build
 ```
-Make migrations:
+
+## Other commands
+Check containers:
 ```
-docker-compose -f docker-compose.prod.yml exec web python engineer_django/manage.py migrate --noinput
+docker-compose ps
 ```
 
-## Useful commands
 ### Development
 ### Production
 To run containers:
