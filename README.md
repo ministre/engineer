@@ -96,6 +96,10 @@ Build and run docker containers:
 ```
 docker-compose -f docker-compose.prod.yml up -d --build
 ```
+Make migrations:
+```
+docker-compose -f docker-compose.prod.yml run --rm web_prod python manage.py migrate --noinput
+```
 
 ## Other commands
 ### Development
