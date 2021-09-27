@@ -90,8 +90,7 @@ Assign <POSTGRES_USER>, <POSTGRES_PASSWORD>, <POSTGRES_USER>, <POSTGRES_PASSWORD
 ```
 echo "POSTGRES_USER=<POSTGRES_USER>
 POSTGRES_PASSWORD=<POSTGRES_PASSWORD>
-POSTGRES_DB=engineer_django_prod
-" >> app/.env.prod.db
+POSTGRES_DB=engineer_django_prod" >> app/.env.prod.db
 ```
 Build and run docker containers:
 ```
