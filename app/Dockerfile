@@ -13,14 +13,18 @@ COPY . .
 
 # install dependencies
 RUN apt-get update && \
-    apt-get -y install netcat && \
+    apt-get -y install apt-utils netcat && \
     apt-get clean
 
-RUN pip install --upgrade pip
-RUN pip install -r engineer_django/requirements.txt
+# create virtual environment
+RUN python3 -m venv env
+RUN source /opt/app/env
 
-# copy entrypoint.sh
-COPY ./entrypoint.sh .
+# set work directory
+WORKDIR /opt/app/engineer_django
+
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
 # run entrypoint.sh
 ENTRYPOINT ["/opt/app/entrypoint.sh"]
