@@ -2,7 +2,7 @@
 FROM python:3.8
 
 # set work directory
-WORKDIR /opt/app
+WORKDIR /opt/app/engineer_django
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -13,18 +13,11 @@ COPY . .
 
 # install dependencies
 RUN apt-get update && \
-    apt-get -y install apt-utils netcat && \
+    apt-get -y install netcat && \
     apt-get clean
 
-# create virtual environment
-RUN python3 -m venv env
-RUN /bin/bash -c "source env"
-
-# set work directory
-WORKDIR /opt/app/engineer_django
-
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install -r engineer_django/requirements.txt
 
 # run entrypoint.sh
 ENTRYPOINT ["/opt/app/entrypoint.sh"]
