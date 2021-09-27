@@ -73,6 +73,26 @@ Create superuser:
 docker-compose run --rm web_dev python manage.py createsuperuser
 ```
 ##### Production
+Assign <SECRET_KEY>, <HOSTS>, <SQL_USER>, <SQL_PASSWORD> and create file .env.prod in app folder
+```
+echo "DEBUG=0
+SECRET_KEY=<SECRET_KEY>
+DJANGO_ALLOWED_HOSTS=<HOSTS>
+SQL_ENGINE=django.db.backends.postgresql
+SQL_DATABASE=engineer_django_prod
+SQL_USER=<SQL_USER>
+SQL_PASSWORD=<SQL_PASSWORD>
+SQL_HOST=db
+SQL_PORT=5432
+DATABASE=postgres" >> app/.env.prod
+```
+Assign <POSTGRES_USER>, <POSTGRES_PASSWORD>, <POSTGRES_USER>, <POSTGRES_PASSWORD> and create file .env.prod.db in app folder
+```
+echo "POSTGRES_USER=<POSTGRES_USER>
+POSTGRES_PASSWORD=<POSTGRES_PASSWORD>
+POSTGRES_DB=engineer_django_prod
+" >> app/.env.prod.db
+```
 Build and run docker containers:
 ```
 docker-compose -f docker-compose.prod.yml up -d --build
