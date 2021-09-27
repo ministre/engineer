@@ -64,6 +64,10 @@ Build and run docker containers:
 ```
 docker-compose -f docker-compose.yml up -d --build
 ```
+Make migrations:
+```
+docker-compose run --rm web python manage.py migrate --noinput
+```
 Create superuser:
 ```
 docker-compose run --rm web python manage.py createsuperuser
