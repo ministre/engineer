@@ -161,3 +161,13 @@ Remove all stopped containers:
 ```
 docker container prune
 ```
+Remove images:
+```
+docker image rm engineer_web_dev
+docker image rm engineer_web_prod
+docker image rm engineer_web_nginx
+```
+Remove unused images:
+```
+docker image prune
+```
