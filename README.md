@@ -155,3 +155,9 @@ Stop containers:
 ```
 docker-compose -f docker-compose.prod.yml down -v
 ```
+## Deinstallation
+
+Remove all stopped containers:
+```
+docker container prune
+```
