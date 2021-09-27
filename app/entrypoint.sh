@@ -11,7 +11,7 @@ then
     echo "PostgreSQL started"
 fi
 
-python engineer_django/manage.py flush --no-input
-python engineer_django/manage.py migrate
+python manage.py flush --no-input
+python manage.py migrate
 
 exec "$@"
