@@ -98,33 +98,56 @@ docker-compose -f docker-compose.prod.yml up -d --build
 ```
 
 ## Other commands
+### Development
+Run containers:
+```
+docker-compose up -d
+```
 Check containers:
 ```
 docker-compose ps
 ```
+Read logs:
+```
+docker-compose logs
+```
+Run bash:
+```
+docker run --rm -it --entrypoint bash engineer_web_dev
+```
+Inspect volumes:
+```
+docker volume inspect engineer_postgres_data
+```
+Stop containers:
+```
+docker-compose down -v
+```
 
-### Development
 ### Production
-To run containers:
+Run containers:
 ```
 docker-compose -f docker-compose.prod.yml up -d
 ```
-To stop containers:
+Check containers:
 ```
-docker-compose -f docker-compose.prod.yml down -v
+docker-compose -f docker-compose.prod.yml ps
 ```
-To read logs:
+Read logs:
 ```
-docker-compose logs -f
+docker-compose -f docker-compose.prod.yml logs
 ```
-To run bash in container:
+Run bash:
 ```
-docker run --rm -it --entrypoint bash engineer_web
-docker run --rm -it --entrypoint bash engineer_nginx
+docker run --rm -it --entrypoint bash engineer_web_prod
 ```
-To inspect volumes:
+Inspect volumes:
 ```
 docker volume inspect engineer_postgres_data
 docker volume inspect engineer_static_volume
 docker volume inspect engineer_media_volume
+```
+Stop containers:
+```
+docker-compose -f docker-compose.prod.yml down -v
 ```
