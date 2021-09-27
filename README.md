@@ -46,6 +46,11 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker-compose --version
 ```
 
+Add user to docker group
+```
+sudo usermod -aG docker $USER
+```
+
 ### Development
 ### Production
 Build and run docker containers:
