@@ -46,13 +46,26 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker-compose --version
 ```
 
-Add user to docker group
+Add user to docker group:
 ```
 sudo usermod -aG docker $USER
 ```
+#### Install Project
+Pull the project:
+```
+git clone https://github.com/ministre/engineer.git
+```
+Entering the project folder:
+```
+cd engineer
+```
+#### Development
+Build and run docker containers:
+```
+docker-compose -f docker-compose.yml up -d --build
+```
 
-### Development
-### Production
+#### Production
 Build and run docker containers:
 ```
 docker-compose -f docker-compose.prod.yml up -d --build
