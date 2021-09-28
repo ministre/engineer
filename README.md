@@ -110,7 +110,7 @@ SQL_ENGINE=django.db.backends.postgresql
 SQL_DATABASE=engineer_django_prod
 SQL_USER=SQL_USER
 SQL_PASSWORD=SQL_PASSWORD
-SQL_HOST=db
+SQL_HOST=db_prod
 SQL_PORT=5432
 DATABASE=postgres" >> .env.prod
 ```
