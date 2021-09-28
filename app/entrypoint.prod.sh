@@ -9,5 +9,6 @@ then
 fi
 
 python manage.py collectstatic --no-input --clear
+python manage.py compilemessages
 
 exec "$@"
