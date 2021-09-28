@@ -114,7 +114,7 @@ SQL_HOST=db
 SQL_PORT=5432
 DATABASE=postgres" >> .env.prod
 ```
-Create .env.prod.db file with assign variables POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_USER, POSTGRES_PASSWORD
+Create .env.prod.db file with assign variables POSTGRES_USER, POSTGRES_PASSWORD
 ```bash
 echo "POSTGRES_USER=POSTGRES_USER
 POSTGRES_PASSWORD=POSTGRES_PASSWORD
