@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'smart_selects',
 ]
 
 MIDDLEWARE = [
@@ -155,3 +156,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Redirect to home URL after login
 LOGIN_REDIRECT_URL = '/device/'
 LOGIN_URL = '/auth/login/'
+
+
+# Django smart selects
+JQUERY_URL = False

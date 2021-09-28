@@ -4,6 +4,16 @@
 
 {% block content %}
 
-111
+<h1>Test</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.media.js }}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" class="button" />
+</form>
+
+<script src="/static/smart-selects/admin/js/chainedfk.js"></script>
+<script src="/static/smart-selects/admin/js/bindfields.js"></script>
 
 {% endblock %}
