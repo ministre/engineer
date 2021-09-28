@@ -166,9 +166,6 @@ docker image rm engineer_nginx
 ```bash
 docker image rm engineer_web_prod
 ```
-```bash
-docker image rm engineer_db_prod
-```
 
 ## References
 https://docs.docker.com/engine/install/ubuntu/
