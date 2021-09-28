@@ -149,6 +149,12 @@ Inspect volumes:
 ```bash
 docker volume inspect engineer_postgres_data_prod
 ```
+```bash
+docker volume inspect engineer_static_volume
+```
+```bash
+docker volume inspect engineer_media_volume
+```
 Stop containers:
 ```bash
 docker-compose -f docker-compose.prod.yml down -v
