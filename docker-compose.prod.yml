@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.prod
     command: gunicorn engineer_django.wsgi:application --bind 0.0.0.0:80
     volumes:
-      - static_volume:/home/app/web/static
+      - static_volume:/home/app/web/engineer_django/static
     expose:
       - 80
     env_file:
