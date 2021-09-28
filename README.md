@@ -95,9 +95,6 @@ Remove images:
 ```bash
 docker image rm engineer_web_dev
 ```
-```bash
-docker image rm engineer_db_dev
-```
 
 ## Production
 ### Installation
