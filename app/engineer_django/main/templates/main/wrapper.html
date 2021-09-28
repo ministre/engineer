@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static i18n %}{% get_current_language as LANGUAGE_CODE %}
+<html class="no-js" lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <title>Engineer</title>
+    <link rel="stylesheet" href="{% static 'foundation-6.6.3-custom/assets/css/foundation.css' %}" />
+</head>
+<body>
+
+<div class="title-bar" data-responsive-toggle="my-menu" data-hide-for="medium">
+    <button class="menu-icon" type="button" data-toggle="my-menu"></button>
+    <div class="title-bar-title">{% trans "Menu" %}</div>
+</div>
+
+<div class="top-bar" id="my-menu">
+    <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text">Engineer</li>
+            {% if user.is_authenticated %}
+            <li><a href="#">1111</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <form action="{% url 'set_language' %}" method="post">
+            <ul class="menu">
+                {% csrf_token %}
+                <li>
+                    <input type="hidden" name="next" value="{{ redirect_to }}">
+                    <select onchange="this.form.submit()" name="language" id="">
+                        {% get_available_languages as LANGUAGES %}{% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected{% endif %}>{{ language.name_local }}</option>
+                        {% endfor %}
+                    </select>
+                </li>
+                <li>&nbsp;</li>
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'logout' %}?next={{ request.path }}" class="button">
+                        {% trans "Sign out" %} ({{ user.get_username }})
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static 'jquery-3.6.0/jquery-3.6.0.js' %}"></script>
+<script type="text/javascript" src="{% static 'foundation-6.6.3-custom/assets/js/foundation.js' %}"></script>
+
+<div class="grid-container fluid" style="padding: 20px;">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<script>
+$(document).foundation();
+</script>
+
+</body>
+</html>

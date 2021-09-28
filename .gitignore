@@ -1,8 +1,10 @@
 ### Python ###
 *.py[cod] 
 *.class
+
 ### PyCharm ###
 .idea
+
 ### Django ###
 *.log
 *.pot
@@ -11,11 +13,15 @@ __pycache__
 db.sqlite3
 app/engineer_django/static/
 app/engineer_django/media/
+**/migrations/*
+
 # Environments
 env/
 .env.prod
 .env.prod.db
+
 # C extensions
 *.so
+
 # Translations
 *.mo
