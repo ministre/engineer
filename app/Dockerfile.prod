@@ -53,7 +53,6 @@ RUN mkdir engineer_django
 COPY . .
 RUN mkdir engineer_django/static
 RUN mkdir engineer_django/media
-RUN mkdir engineer_django/locale
 
 # chown all the files to the app user
 RUN chown -R app:app $APP_HOME
