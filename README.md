@@ -161,6 +161,9 @@ docker-compose -f docker-compose.prod.yml down -v
 ```
 Remove images:
 ```bash
+docker image rm engineer_nginx
+```
+```bash
 docker image rm engineer_web_prod
 ```
 ```bash
