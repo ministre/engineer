@@ -12,24 +12,24 @@ services:
     env_file:
       - ./.env.prod
     depends_on:
-      - db
-  db:
+      - db_prod
+  db_prod:
     image: postgres:13
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_data_prod:/var/lib/postgresql/data/
     env_file:
       - ./.env.prod.db
   nginx:
     build: ./nginx
     volumes:
-      - static_volume:/home/app/web/static
-      - media_volume:/home/app/web/media
+      - static_volume:/home/app/web/engineer_django/static
+      - media_volume:/home/app/web/engineer_django/media
     ports:
       - 80:80
     depends_on:
       - web_prod
 
 volumes:
-  postgres_data:
+  postgres_data_prod:
   static_volume:
   media_volume:
