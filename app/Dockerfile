@@ -13,7 +13,7 @@ COPY . .
 
 # install dependencies
 RUN apt-get update && \
-    apt-get -y install netcat && \
+    apt-get -y install netcat gettext && \
     apt-get clean
 
 RUN pip install --upgrade pip
