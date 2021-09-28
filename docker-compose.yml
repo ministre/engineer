@@ -11,15 +11,15 @@ services:
     env_file:
       - ./.env.dev
     depends_on:
-      - db
-  db:
+      - db_dev
+  db_dev:
     image: postgres:13
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_data_dev:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=engineer_django
       - POSTGRES_PASSWORD=engineer_django
       - POSTGRES_DB=engineer_django_dev
 
 volumes:
-  postgres_data:
+  postgres_data_dev:
