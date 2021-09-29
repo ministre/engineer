@@ -10,11 +10,9 @@
 
 {% if next %}
   {% if user.is_authenticated %}
-    <div class="callout alert"><p>{% trans "Access error" %}!</p></div>
+    <div class="callout alert">{% trans "Access error" %}!</div>
   {% endif %}
 {% endif %}
-
-<h2>{% trans "Authentication" %}</h2>
 
 <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
