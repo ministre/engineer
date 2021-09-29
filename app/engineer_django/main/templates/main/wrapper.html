@@ -19,6 +19,7 @@
             <li class="menu-text">Engineer</li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'main' %}">{% trans "Get Password" %}</a></li>
+            <li><a href="{% url 'models' %}">{% trans "Devices" %}</a></li>
             {% endif %}
         </ul>
     </div>

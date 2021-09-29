@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .forms import GetPasswordForm
+from .forms import GetPasswordForm, DevForm
 from .models import Model
 from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
+from django.utils.decorators import method_decorator
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.urls import reverse
 from .gen import dynamic_pass
 
 
@@ -45,3 +48,39 @@ def get_password(model_id: int, sn: str):
             return [True, pwd]
         else:
             return [False, _('Serial number not specified')]
+
+
+@method_decorator(login_required, name='dispatch')
+class ModelListView(ListView):
+    context_object_name = 'models'
+    queryset = Model.objects.all().order_by('name')
+    template_name = 'main/models.html'
+
+
+@method_decorator(login_required, name='dispatch')
+class ModelCreate(CreateView):
+    model = Model
+    form_class = DevForm
+    template_name = 'main/model_create.html'
+
+    def get_success_url(self):
+        return reverse('models')
+
+
+@method_decorator(login_required, name='dispatch')
+class ModelUpdate(UpdateView):
+    model = Model
+    form_class = DevForm
+    template_name = 'main/model_update.html'
+
+    def get_success_url(self):
+        return reverse('models')
+
+
+@method_decorator(login_required, name='dispatch')
+class ModelDelete(DeleteView):
+    model = Model
+    template_name = 'main/model_delete.html'
+
+    def get_success_url(self):
+        return reverse('models')

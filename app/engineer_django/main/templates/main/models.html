@@ -1,0 +1,38 @@
+{% extends "main/wrapper.html" %}
+
+{% load i18n static %}
+
+{% block content %}
+
+<table class="unstriped hover">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>{% trans "Vendor" %}</th>
+        <th>{% trans "Model" %}</th>
+        <th>{% trans "Password Type" %}</th>
+        <th>{% trans "Password" %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for model in models %}
+    <tr>
+        <td>{{ model.id }}</td>
+        <td>{{ model.vendor.name }}</td>
+        <td>{{ model.name }}</td>
+        <td>
+            {% if model.password_type == 0 %}
+            {% trans "Static" %}
+            {% elif model.password_type == 1 %}
+            {% trans "Static + 5 chars of SN" %}
+            {% else %}
+            {% trans "Dynamic" %}
+            {% endif %}
+        </td>
+        <td>{% if model.password %}{{ model.password }}{% endif %}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
