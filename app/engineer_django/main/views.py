@@ -17,10 +17,10 @@ def device(request):
         get_password_form = GetPasswordForm(request.POST)
         if get_password_form.is_valid():
             message = get_password(model_id=request.POST['model'], sn=request.POST['sn'])
-            return render(request, 'main/device.html', {'message': message, 'form': form})
-        return render(request, 'main/device.html', {'message': [False, _('Unknown Error')], 'form': form})
+            return render(request, 'main/get_pass.html', {'message': message, 'form': form})
+        return render(request, 'main/get_pass.html', {'message': [False, _('Unknown Error')], 'form': form})
     else:
-        return render(request, 'main/device.html', {'form': form})
+        return render(request, 'main/get_pass.html', {'form': form})
 
 
 def get_password(model_id: int, sn: str):
