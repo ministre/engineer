@@ -98,10 +98,10 @@ docker image rm engineer_web_dev
 
 ## Production
 ### Installation
-Create .env.prod file with assign variables SECRET_KEY, HOSTS, SQL_USER, SQL_PASSWORD:
+Create .env.prod file with assign variables DJANGO_SECRET_KEY, HOSTS, SQL_USER, SQL_PASSWORD:
 ```bash
 echo "DEBUG=0
-SECRET_KEY=SECRET_KEY
+DJANGO_SECRET_KEY=DJANGO_SECRET_KEY
 DJANGO_ALLOWED_HOSTS=HOSTS
 SQL_ENGINE=django.db.backends.postgresql
 SQL_DATABASE=engineer_django_prod
