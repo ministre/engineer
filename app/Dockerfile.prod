@@ -63,5 +63,9 @@ USER app
 # set work directory
 WORKDIR $APP_HOME/engineer_django
 
+# django statics and localization
+RUN python manage.py collectstatic --no-input --clear
+RUN python manage.py compilemessages
+
 # run entrypoint.prod.sh
 ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
