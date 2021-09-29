@@ -29,6 +29,6 @@ class DevForm(ModelForm):
         PASS_TYPE = (
             ('0', _('Static')),
             ('1', _('Static + last 5 characters of serial number')),
-            ('3', _('Dynamic')),
+            ('3', _('SN & Vendor hash')),
         )
         widgets = {'password_type': forms.Select(choices=PASS_TYPE, attrs={'class': 'form-control'})}

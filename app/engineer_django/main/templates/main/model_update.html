@@ -1,0 +1,15 @@
+{% extends "main/wrapper.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<form method="post" action="">
+  <a href="{% url 'models' %}" class="button small">&laquo; {% trans "Back" %}</a>
+  <input type="submit" value='{% trans "Update" %}' class="button success small" />
+  <a href="{% url 'model_delete' pk=object.id %}" class="button alert small">{% trans "Delete" %}</a>
+  {% csrf_token %}
+  {{ form }}
+</form>
+
+{% endblock %}

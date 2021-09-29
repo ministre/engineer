@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<a href="{% url 'model_create' %}" class="button">{% trans "Create" %}</a>
+<a href="{% url 'model_create' %}" class="button small">{% trans "Add" %}</a>
 
 <table id="models" class="hover unstriped" style="width:100%">
     <thead>
@@ -26,7 +26,7 @@
             {% elif model.password_type == 1 %}
             {% trans "Static + SN" %}
             {% else %}
-            {% trans "Dynamic" %}
+            {% trans "SN & Vendor hash" %}
             {% endif %}
         </td>
         <td>{% if model.password %}{{ model.password }}{% endif %}</td>

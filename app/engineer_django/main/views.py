@@ -42,7 +42,7 @@ def get_password(model_id: int, sn: str):
         else:
             return [False, _('Serial number not specified')]
     else:
-        # dynamic
+        # sn & vendor hash
         if sn:
             pwd = dynamic_pass(manufacturer=model.vendor.name, sn=sn)
             return [True, pwd]
@@ -61,7 +61,7 @@ class ModelListView(ListView):
 class ModelCreate(CreateView):
     model = Model
     form_class = DevForm
-    template_name = 'main/model_create_update.html'
+    template_name = 'main/model_create.html'
 
     def get_success_url(self):
         return reverse('models')
@@ -71,7 +71,7 @@ class ModelCreate(CreateView):
 class ModelUpdate(UpdateView):
     model = Model
     form_class = DevForm
-    template_name = 'main/model_create_update.html'
+    template_name = 'main/model_update.html'
 
     def get_success_url(self):
         return reverse('models')

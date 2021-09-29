@@ -1,0 +1,15 @@
+{% extends "main/wrapper.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<div class="callout alert">{% trans "Are you sure you want to delete" %} "<b>{{ object }}</b>"?</div>
+
+<form method="post">
+    {% csrf_token %}
+    <a href="{% url 'model_update' pk=object.id %}" class="button small">{% trans "Back" %}</a>
+    <input type="submit" value='{% trans "Confirm" %}' class="button alert small" />
+</form>
+
+{% endblock %}
