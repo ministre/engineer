@@ -40,4 +40,8 @@ def get_password(model_id: int, sn: str):
             return [False, _('Serial number not specified')]
     else:
         # dynamic
-        return 'dynamic'
+        if sn:
+            pwd = dynamic_pass(manufacturer=model.vendor.name, sn=sn)
+            return [True, pwd]
+        else:
+            return [False, _('Serial number not specified')]
