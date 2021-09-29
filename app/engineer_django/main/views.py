@@ -36,7 +36,7 @@ def get_password(model_id: int, sn: str):
         # static + last 5 characters of sn
         if sn:
             if model.password:
-                return [True, model.password + sn]
+                return [True, model.password + sn[-5:]]
             else:
                 return [False, _('Static password not specified')]
         else:
