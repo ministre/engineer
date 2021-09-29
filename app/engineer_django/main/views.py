@@ -61,7 +61,7 @@ class ModelListView(ListView):
 class ModelCreate(CreateView):
     model = Model
     form_class = DevForm
-    template_name = 'main/model_create.html'
+    template_name = 'main/model_create_update.html'
 
     def get_success_url(self):
         return reverse('models')
@@ -71,7 +71,7 @@ class ModelCreate(CreateView):
 class ModelUpdate(UpdateView):
     model = Model
     form_class = DevForm
-    template_name = 'main/model_update.html'
+    template_name = 'main/model_create_update.html'
 
     def get_success_url(self):
         return reverse('models')

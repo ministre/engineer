@@ -2,9 +2,12 @@
 {% load static i18n %}{% get_current_language as LANGUAGE_CODE %}
 <html class="no-js" lang="{{ LANGUAGE_CODE }}">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Engineer</title>
     <link rel="stylesheet" href="{% static 'foundation-6.6.3-custom/assets/css/foundation.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'DataTables/datatables.min.css' %}" />
 </head>
 <body>
 

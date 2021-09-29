@@ -4,22 +4,22 @@
 
 {% block content %}
 
-<table class="unstriped hover">
+<a href="{% url 'model_create' %}" class="button">{% trans "Create" %}</a>
+
+<table id="models" class="hover unstriped" style="width:100%">
     <thead>
     <tr>
         <th>ID</th>
-        <th>{% trans "Vendor" %}</th>
-        <th>{% trans "Model" %}</th>
+        <th>{% trans "Device" %}</th>
         <th>{% trans "Password Type" %}</th>
         <th>{% trans "Password" %}</th>
     </tr>
     </thead>
     <tbody>
     {% for model in models %}
-    <tr>
+    <tr data-href="{% url 'model_update' pk=model.id %}">
         <td>{{ model.id }}</td>
-        <td>{{ model.vendor.name }}</td>
-        <td>{{ model.name }}</td>
+        <td>{{ model.vendor.name }} {{ model.name }}</td>
         <td>
             {% if model.password_type == 0 %}
             {% trans "Static" %}
@@ -34,5 +34,28 @@
     {% endfor %}
     </tbody>
 </table>
+
+<script>
+    $(document).ready(function() {
+        var table = $('#models').DataTable({
+        {% if LANGUAGE_CODE == 'ru' %}
+            "language": { "url": "{% static '/DataTables/i18n/Russian.json' %}" },
+        {% endif %}
+        "pageLength": 100,
+        "order": [[ 1, "asc" ]]
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const rows = document.querySelectorAll("tr[data-href]");
+        rows.forEach(row => {
+            row.addEventListener("click", () => {
+                window.location.href = row.dataset.href;
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript" src="{% static 'DataTables/datatables.js' %}"></script>
 
 {% endblock %}

@@ -1,0 +1,14 @@
+{% extends "main/wrapper.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<form method="post" action="">
+  <a href="{% url 'models' %}" class="button">&laquo; {% trans "Back" %}</a>
+  <input type="submit" value='{% trans "Apply" %}' class="button success" />
+  {% csrf_token %}
+  {{ form }}
+</form>
+
+{% endblock %}
