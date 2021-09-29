@@ -12,7 +12,7 @@ class Vendor(models.Model):
 class Model(models.Model):
     vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, unique=True)
-    password_type = models.IntegerField(default=0)
+    password_type = models.IntegerField(default=2)
     password = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
