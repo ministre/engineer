@@ -8,6 +8,9 @@ then
     echo "PostgreSQL started"
 fi
 
+python manage.py collectstatic --no-input --clear
+pybabel compile -i locale/ru/LC_MESSAGES/django.po -o locale/ru/LC_MESSAGES/django.mo -f
+python manage.py makemigrations --no-input
 python manage.py migrate
 
 exec "$@"
