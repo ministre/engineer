@@ -96,7 +96,7 @@ docker volume inspect engineer_postgres_data
 ```bash
 docker volume inspect engineer_static
 ```
-To :
+Open bash in container:
 ```bash
 docker run --rm -it --entrypoint bash engineer_web
 ```
