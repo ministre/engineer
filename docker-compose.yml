@@ -27,7 +27,7 @@ services:
       - static:/home/app/web/engineer_django/static
     restart: unless-stopped
     ports:
-      - 80:80
+      - 1337:80
     depends_on:
       - web
 
