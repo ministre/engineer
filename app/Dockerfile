@@ -60,7 +60,7 @@ WORKDIR $APP_HOME/engineer_django
 
 # django collect statics, compile localization messages, make migrations
 RUN python manage.py collectstatic --no-input --clear
-RUN pybabel compile -i locale\ru\LC_MESSAGES\django.po -o locale\ru\LC_MESSAGES\django.mo -f
+RUN pybabel compile -i locale/ru/LC_MESSAGES/django.po -o locale/ru/LC_MESSAGES/django.mo -f
 RUN python manage.py makemigrations --no-input
 
 # run entrypoint.sh
