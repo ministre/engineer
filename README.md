@@ -89,7 +89,7 @@ Read logs:
 ```bash
 docker-compose logs
 ```
-Run bash in container:
+Launch bash in container:
 ```bash
 docker run --rm -it --entrypoint bash engineer_web
 ```
@@ -97,7 +97,7 @@ Inspect volumes:
 ```bash
 docker volume inspect engineer_postgres_data
 ```
-## Installation
+## Deinstallation
 
 Stop containers:
 ```bash
@@ -116,5 +116,5 @@ docker volume rm engineer_static
 ```
 
 ## References
-https://docs.docker.com/engine/install/ubuntu/
-https://docs.docker.com/compose/install/
+- https://docs.docker.com/engine/install/ubuntu/
+- https://docs.docker.com/compose/install/
