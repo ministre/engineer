@@ -60,7 +60,7 @@ WORKDIR $APP_HOME/engineer_django
 
 # django collect statics, compile localization messages, make migrations
 RUN python manage.py collectstatic --no-input --clear
-RUN python manage.py compilemessages --no-input
+RUN python manage.py compilemessages
 RUN python manage.py makemigrations --no-input
 
 # run entrypoint.sh
