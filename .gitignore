@@ -18,8 +18,8 @@ app/engineer_django/media/
 
 # Environments
 env/
-.env.prod
-.env.prod.db
+.env
+.env.db
 
 # C extensions
 *.so
