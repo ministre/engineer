@@ -52,6 +52,25 @@ git clone https://github.com/ministre/engineer.git && cd engineer
 ```
 
 ## Installation
+Create .env file with assign variables DJANGO_SECRET_KEY, HOSTS, SQL_USER, SQL_PASSWORD:
+```bash
+echo "DEBUG=0
+DJANGO_SECRET_KEY=DJANGO_SECRET_KEY
+DJANGO_ALLOWED_HOSTS=HOSTS
+SQL_ENGINE=django.db.backends.postgresql
+SQL_DATABASE=engineer
+SQL_USER=SQL_USER
+SQL_PASSWORD=SQL_PASSWORD
+SQL_HOST=db
+SQL_PORT=5432
+DATABASE=postgres" >> .env
+```
+Create .env.prod.db file with assign variables POSTGRES_USER, POSTGRES_PASSWORD:
+```bash
+echo "POSTGRES_USER=POSTGRES_USER
+POSTGRES_PASSWORD=POSTGRES_PASSWORD
+POSTGRES_DB=engineer" >> .env.db
+```
 Build and run docker containers:
 ```bash
 docker-compose up -d --build
