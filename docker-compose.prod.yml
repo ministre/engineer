@@ -1,38 +1,38 @@
 version: '3.7'
 services:
-  web_prod:
+  db:
+    image: postgres:13
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.db
+  web:
     build:
       context: ./app
-      dockerfile: Dockerfile.prod
-    command: gunicorn engineer_django.wsgi:application --bind 0.0.0.0:80
+      dockerfile: Dockerfile
+    command: gunicorn engineer_django.wsgi:application --bind 0.0.0.0:80 --reload
     volumes:
-      - static_volume:/home/app/web/engineer_django/static
+      - static:/home/app/web/engineer_django/static
     restart: unless-stopped
     expose:
       - 80
     env_file:
-      - ./.env.prod
+      - ./.env
     depends_on:
-      - db_prod
-  db_prod:
-    image: postgres:13
-    restart: unless-stopped
-    volumes:
-      - postgres_data_prod:/var/lib/postgresql/data/
-    env_file:
-      - ./.env.prod.db
+      - db
   nginx:
     build: ./nginx
     volumes:
-      - static_volume:/home/app/web/engineer_django/static
-      - media_volume:/home/app/web/engineer_django/media
+      - static:/home/app/web/engineer_django/static
+      - media:/home/app/web/engineer_django/media
     restart: unless-stopped
     ports:
       - 80:80
     depends_on:
-      - web_prod
+      - web
 
 volumes:
-  postgres_data_prod:
-  static_volume:
-  media_volume:
+  postgres_data:
+  static:
+  media:
