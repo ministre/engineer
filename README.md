@@ -80,23 +80,27 @@ Create superuser:
 docker-compose run --rm web python manage.py createsuperuser
 ```
 
-### Other commands
-Check containers:
+### Checking
+Containers status:
 ```bash
 docker-compose ps
 ```
-Read logs:
+Logs:
 ```bash
 docker-compose logs
-```
-Launch bash in container:
-```bash
-docker run --rm -it --entrypoint bash engineer_web
 ```
 Inspect volumes:
 ```bash
 docker volume inspect engineer_postgres_data
 ```
+```bash
+docker volume inspect engineer_static
+```
+To :
+```bash
+docker run --rm -it --entrypoint bash engineer_web
+```
+
 ## Deinstallation
 
 Stop containers:
