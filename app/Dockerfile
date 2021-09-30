@@ -12,7 +12,7 @@ WORKDIR /opt/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-COPY app/engineer_django/requirements.txt .
+COPY ./engineer_django/requirements.txt .
 
 # install dependencies
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /opt/app/wheels -r requirements.txt
