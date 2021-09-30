@@ -12,9 +12,8 @@ WORKDIR /opt/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-COPY ./engineer_django/requirements.txt .
-
 # install dependencies
+COPY ./engineer_django/requirements.txt .
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /opt/app/wheels -r requirements.txt
 
 #########
@@ -37,9 +36,9 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 # install dependencies
-#RUN apt-get update && \
-#    apt-get -y install netcat gettext && \
-#    apt-get clean
+RUN apt-get update && \
+    apt-get -y install netcat && \
+    apt-get clean
 
 COPY --from=builder /opt/app/wheels /wheels
 RUN pip install --no-cache /wheels/*
