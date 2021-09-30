@@ -24,9 +24,9 @@
             {% if model.password_type == 0 %}
             {% trans "Static" %}
             {% elif model.password_type == 1 %}
-            {% trans "Static + SN" %}
+            {% trans "Static" %} + SN
             {% else %}
-            {% trans "SN & Vendor hash" %}
+            {% trans "Hash" %}
             {% endif %}
         </td>
         <td>{% if model.password %}{{ model.password }}{% endif %}</td>
