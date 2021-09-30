@@ -47,29 +47,20 @@ sudo usermod -aG docker $USER
 ```
 
 ## Pull the project
-Pull the project:
 ```bash
-git clone https://github.com/ministre/engineer.git
-```
-Enter the project folder:
-```bash
-cd engineer
+git clone https://github.com/ministre/engineer.git && cd engineer
 ```
 
-## Development
-### Installation
+## Installation
 Build and run docker containers:
 ```bash
 docker-compose up -d --build
 ```
-Make migrations:
-```bash
-docker-compose run --rm web_dev python manage.py migrate --noinput
-```
 Create superuser:
 ```bash
-docker-compose run --rm web_dev python manage.py createsuperuser
+docker-compose run --rm web python manage.py createsuperuser
 ```
+
 ### Other commands
 Check containers:
 ```bash
@@ -81,87 +72,28 @@ docker-compose logs
 ```
 Run bash in container:
 ```bash
-docker run --rm -it --entrypoint bash engineer_web_dev
+docker run --rm -it --entrypoint bash engineer_web
 ```
 Inspect volumes:
 ```bash
-docker volume inspect engineer_postgres_data_dev
+docker volume inspect engineer_postgres_data
 ```
+## Installation
+
 Stop containers:
 ```bash
 docker-compose down -v
 ```
 Remove images:
 ```bash
-docker image rm engineer_web_dev
+docker image rm engineer_web
 ```
-
-## Production
-### Installation
-Create .env.prod file with assign variables DJANGO_SECRET_KEY, HOSTS, SQL_USER, SQL_PASSWORD:
+Remove volumes:
 ```bash
-echo "DEBUG=0
-DJANGO_SECRET_KEY=DJANGO_SECRET_KEY
-DJANGO_ALLOWED_HOSTS=HOSTS
-SQL_ENGINE=django.db.backends.postgresql
-SQL_DATABASE=engineer_django_prod
-SQL_USER=SQL_USER
-SQL_PASSWORD=SQL_PASSWORD
-SQL_HOST=db_prod
-SQL_PORT=5432
-DATABASE=postgres" >> .env.prod
-```
-Create .env.prod.db file with assign variables POSTGRES_USER, POSTGRES_PASSWORD:
-```bash
-echo "POSTGRES_USER=POSTGRES_USER
-POSTGRES_PASSWORD=POSTGRES_PASSWORD
-POSTGRES_DB=engineer_django_prod" >> .env.prod.db
-```
-Build and run docker containers:
-```
-docker-compose -f docker-compose.prod.yml up -d --build
-```
-Make migrations:
-```
-docker-compose -f docker-compose.prod.yml run --rm web_prod python manage.py migrate --noinput
-```
-Create superuser:
-```bash
-docker-compose -f docker-compose.prod.yml run --rm web_prod python manage.py createsuperuser
-```
-### Other commands
-Check containers:
-```bash
-docker-compose -f docker-compose.prod.yml ps
-```
-Read logs:
-```bash
-docker-compose -f docker-compose.prod.yml logs
-```
-Run bash in container:
-```bash
-docker run --rm -it --entrypoint bash engineer_web_prod
-```
-Inspect volumes:
-```bash
-docker volume inspect engineer_postgres_data_prod
+docker volume rm engineer_postgres_data
 ```
 ```bash
-docker volume inspect engineer_static_volume
-```
-```bash
-docker volume inspect engineer_media_volume
-```
-Stop containers:
-```bash
-docker-compose -f docker-compose.prod.yml down -v
-```
-Remove images:
-```bash
-docker image rm engineer_nginx
-```
-```bash
-docker image rm engineer_web_prod
+docker volume rm engineer_static
 ```
 
 ## References
